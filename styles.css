@@ -3,8 +3,9 @@
     --color-red: #e63636;
     --color-dark1: #181818;
     --color-dark2: #1e1e1e;
-    --color-purple1: #9333FF;
-    --color-purple2: indigo;
+    --color-purple1: hwb(192 14% 2%);
+    --color-purple2: rgb(3, 31, 109);
+    --color-purple3: #a71f1f;
 }
 
 *{
@@ -19,7 +20,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 120vh;
 }
 
 .content{
@@ -49,7 +50,7 @@ h1{
 }
 
 .inputs{
-    padding: 8px 5px;
+    padding: 8px 8px;
     outline: none;
     border-radius: 5px;
     background-color: var(--color-dark1);
@@ -84,6 +85,22 @@ button[type="submit"]{
     transition: .3s;
 }
 
+button[type="reset"]{
+    padding: 1rem;
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    margin-top: 1rem;
+    background-color: var(--color-purple3);
+    color: var(--color-white);
+    cursor: pointer;
+    transition: .3s;
+}
+
+button[type="reset"]:hover{
+    background-color: var(--color-red)
+}
 button[type="submit"]:hover{
     background-color: var(--color-purple1);
 }
