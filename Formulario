@@ -1,0 +1,128 @@
+'<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Formulário GN</title>
+</head>
+<body>
+    <div class="content">
+        <h1>Formulário </h1>
+        <form id="form">
+            <div>
+                <p>Nome:</p>
+                <input type="text" placeholder="Digite o Nome Do Coordenador" class="inputs required" oninput="nameValidate()"> <!-- OPCOES --> 
+                <span class="span-required">Nome deve ter no mínimo 3 caracteres</span>
+            </div>
+            <p>Curso:</p>
+              </select><select name="select">
+                <option value="Sistemas de Informação"selected>Sistemas de Informação</option>
+                <option value="Administração" selected>Administração</option>
+                <option value="Agronomia"selected>Agronomia</option>
+                <option value="Biomedicina"selected>Biomedicina</option>
+                <option value="Ciências Contábeis"selected>Ciências Contábeis</option>
+                <option value="Direito"selected>Direito</option>
+                <option value="Enfermagem"selected>Enfermagem</option>
+                <option value="Pedagogia"selected>Pedagogia</option>
+                <option value="Psicologia"selected>Psicologia</option>
+                <span class="span-required">Escolha um Curso</span>
+                
+              </select>
+            <div> 
+                <p>Projeto:</p>
+                <input type="email" placeholder="Digite Nome do Projeto" class="inputs required" oninput="emailValidate()">
+                <span class="span-required">Digite um  válido</span>
+            </div>
+            <p>Descrição</p>
+            <textarea class="inputs" name="descricao" id="descricao" cols="25" rows="10" placeholder="Fale um pouco sobre você..."></textarea>
+            <p>Agenda Entrevista:</p>
+            <div>
+                <input type="date" placeholder="Digite Nome do Projeto" class="inputs required" oninput="emailValidate()">
+                <span class="span-required">Digite um email válido</span>
+            </div>
+            <div>
+                <input type="email" placeholder="Responsavel" class="inputs required" oninput="emailValidate()"><!-- OPCOES --> 
+                <span class="span-required">Dválido</span>
+            </div>
+            <div>
+                <input type="email" placeholder="Digite Seu Email" class="inputs required" oninput="emailValidate()"><!-- OPCOES --> 
+                <span class="span-required">Digite um email válido</span>
+            </div>
+            <button type="reset">Limpar</button>
+            <button type="submit">Criar</button>
+        </form>
+    </div>
+</body>
+<script>
+    const form   = document.getElementById('form');
+    const campos = document.querySelectorAll('.required');
+    const spans  = document.querySelectorAll('.span-required');
+    const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        nameValidate();
+        emailValidate();
+        mainPasswordValidate();
+        comparePassword();
+    });
+
+    function setError(index){
+        campos[index].style.border = '2px solid #e63636';
+        spans[index].style.display = 'block';
+    }
+
+    function removeError(index){
+        campos[index].style.border = '';
+        spans[index].style.display = 'none';
+    }
+
+    function nameValidate(){
+        if(campos[0].value.length < 3)
+        {
+            setError(0);
+        }
+        else
+        {
+            removeError(0);
+        }
+    }
+
+    function emailValidate(){
+        if(!emailRegex.test(campos[1].value))
+        {
+            setError(1);
+        }
+        else
+        {
+            removeError(1);
+        }
+    }
+
+    function mainPasswordValidate(){
+        if(campos[2].value.length < 8)
+        {
+            setError(2);
+        }
+        else
+        {
+            removeError(2);
+            comparePassword();
+        }
+    }
+
+    function comparePassword(){
+        if(campos[2].value == campos[3].value && campos[3].value.length >= 8)
+        {
+            removeError(3);
+        }
+        else
+        {
+            setError(3);
+        }
+    }
+
+</script>
+</html>'
